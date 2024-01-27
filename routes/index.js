@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 const passport = require("passport")
 const userModel = require("./users")
+const postModel = require("./posts")
+const upload = require('./multer')
 const localStrategy = require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
+
 
 /* GET home page. */
 
@@ -16,22 +19,25 @@ router.get('/', function(req, res, next) {
 
 
 // for view
-router.get('/feed', function(req, res, next) {
-  res.render('feed');
-});
+router.get("/feed",async (req,res)=>{
+  let allPost = await postModel.find();
+  res.render("feed",{posts:allPost})
+})
 
 
 
 
 // for view
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  res.render('login', {error: req.flash("error")});
 });
 
 
 //profile
-router.get("/profile",isLoggedIn,function(req,res){
-  res.render("profile");
+router.get("/profile",isLoggedIn,async function(req,res){
+  // automatically details get saved to session .passport
+  const user = await userModel.findOne({username:req.session.passport.user}).populate('posts')
+  res.render("profile",{user:user});
 })
 
 
@@ -54,7 +60,8 @@ router.post("/register",function(req,res){
 //login
 router.post("/login",passport.authenticate("local",{
   successRedirect:"/profile",
-  failureRedirect:"/login"
+  failureRedirect:"/login",
+  failureFlash:true
 }),function(req,res){})
 
 
@@ -75,6 +82,37 @@ function isLoggedIn(req,res,next){
   res.redirect("/login");
 }
 
+
+//image upload
+router.post("/upload",isLoggedIn,upload.single('file'),async (req,res)=>{
+  if(!req.file){
+    return res.status(404).send("No file uploaded")
+  }
+
+  // save uploaded file as a post
+  let user = await userModel.findOne({username: req.session.passport.user});
+  let postdata = await postModel.create({
+    postText: req.body.description,
+    postImage:req.file.filename,
+    user:user._id,
+   })
+  user.posts.push(postdata._id);
+  await user.save();
+  res.redirect("/profile")
+});
+
+//update profilePhoto
+router.post("/uploadPhoto",isLoggedIn,upload.single('image'),async (req,res)=>{
+  if(!req.file){
+    return res.status(404).send("No file uploaded")
+  }
+
+  // save uploaded file as a dp
+  let user = await userModel.findOne({username: req.session.passport.user});
+  user.dp = req.file.filename;
+  await user.save();
+  res.redirect("/profile")
+})
 
 
 

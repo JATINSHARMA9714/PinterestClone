@@ -127,6 +127,11 @@
   a{
     text-decoration: none;
   }
+  .error{
+    color: red;
+    font-size: 16px;
+    margin: 1vw;
+  }
   footer p {
     font-size: 12px;
     margin: 10px;

@@ -54,14 +54,20 @@ li {
   height: 50px;
 }
 
-.nav-icon {
-  margin: 0px 8px;
-  height: 28px;
-  width: 28px;
-}
 
-.nav-icons {
-  margin-left: 10px;
+.nav-icons button {
+  padding: 10px 20px;
+  font-family: poppins;
+  font-weight: 500;
+  font-size: 20px;
+  background-color: rgb(236, 60, 60);
+
+  border-radius: 50px;
+  border: none;
+}
+.nav-icons button a{
+  color: white;
+  text-decoration: none;
 }
 
 .arrow-icon {

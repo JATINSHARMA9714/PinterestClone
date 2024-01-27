@@ -12,10 +12,10 @@ const userSchema = mongoose.Schema({
   password:{
     type:String,
   },
-  posts:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Post'
-  },
+  posts:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Post',
+  }],
   dp:{
     type:String
   },

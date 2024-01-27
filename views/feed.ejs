@@ -29,47 +29,19 @@
       <input type="text" placeholder="Search">
     </div>
     <div class="nav-icons">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/bell-icon.png" class="icon nav-icon">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/speech-bubble-black-icon.png" class="icon nav-icon">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/angle-bottom-icon.png" class="icon nav-icon arrow-icon">
+      <button><a href="/profile">My Profile</a></button>
     </div>
   </div>
   <div class="grid">
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1691146735493-d5bed077ef1c?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIyODN8&ixlib=rb-4.0.3&q=85" />
-    </div>
 
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693140301742-b9349aafca29?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIyODN8&ixlib=rb-4.0.3&q=85" />
-    </div>
+    <% posts.forEach((pst)=>{ %>
+      <div class="grid-item">
+        <img src="/images/uploads/<%=pst.postImage%>" />
+      </div>
+    <% }) %>
+    
 
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693748960930-aa517d67fe00?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIyODN8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1695010800005-50cb50823351?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIzNzl8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693956089429-e2394b22071e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDI0Mzh8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1692526664882-5a2a505e89e5?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDI0Mzh8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693222918463-b3478d35131c?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDI0Mzh8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693576757206-dff6b2bad799?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDI1Mjd8&ixlib=rb-4.0.3&q=85" />
-    </div>
-
-    <div class="grid-item">
-      <img src="https://images.unsplash.com/photo-1693576588093-7244ecec24c9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDI1OTB8&ixlib=rb-4.0.3&q=85" />
-    </div>
+    
 
     
   </div>
